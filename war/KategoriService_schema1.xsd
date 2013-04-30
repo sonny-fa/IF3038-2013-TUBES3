@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema version="1.0" targetNamespace="http://tubes4.progin.zzz/" xmlns:tns="http://tubes4.progin.zzz/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <xs:element name="sayTest" type="tns:sayTest"/>
+
+  <xs:element name="sayTestResponse" type="tns:sayTestResponse"/>
+
+  <xs:complexType name="sayTest">
+    <xs:sequence>
+      <xs:element name="arg0" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="sayTestResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
+

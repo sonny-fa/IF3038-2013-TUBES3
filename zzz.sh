@@ -1,0 +1,1 @@
+wsgen -cp "./war/WEB-INF/classes" -wsdl -keep -r "./war" -d "./war/WEB-INF/classes" -s "./src"  zzz.progin.tubes4.Kategori
