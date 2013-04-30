@@ -1,5 +1,7 @@
 package zzz.progin.tubes4.datastore;
 
+import java.util.ArrayList;
+
 import com.google.appengine.api.datastore.Key;
 
 import javax.jdo.annotations.IdGeneratorStrategy;
@@ -19,12 +21,19 @@ public class DataKategori {
 	private String namaKategori;
 	
 	@Persistent
-	private DataAccounts dataAccount;
+	private DataAccounts accountPembuat;
 	
-	public DataKategori(String namaKategori, DataAccounts dataAccounts){
+	@Persistent
+	private ArrayList<DataAccounts> user_yang_punya_kategori;
+	
+	@Persistent(mappedBy = "dataKategori")
+	private ArrayList<DataTugas> listTugas;
+	
+	public DataKategori(String namaKategori){
 		super();
 		this.setNamaKategori(namaKategori);
-		this.setDataAccount(dataAccounts);
+		setUser_yang_punya_kategori(new ArrayList<DataAccounts>());
+		setListTugas(new ArrayList<DataTugas>());
 	}
 
 	public Key getIdKategori() {
@@ -35,8 +44,6 @@ public class DataKategori {
 		this.idKategori = idKategori;
 	}
 
-
-
 	public String getNamaKategori() {
 		return namaKategori;
 	}
@@ -45,11 +52,36 @@ public class DataKategori {
 		this.namaKategori = namaKategori;
 	}
 
-	public DataAccounts getDataAccount() {
-		return dataAccount;
+	public DataAccounts getAccountPembuat() {
+		return accountPembuat;
 	}
 
-	public void setDataAccount(DataAccounts dataAccount) {
-		this.dataAccount = dataAccount;
+	public void setAccountPembuat(DataAccounts accountPembuat) {
+		this.accountPembuat = accountPembuat;
 	}
+
+	public ArrayList<DataAccounts> getUser_yang_punya_kategori() {
+		return user_yang_punya_kategori;
+	}
+
+	public void setUser_yang_punya_kategori(ArrayList<DataAccounts> user_yang_punya_kategori) {
+		this.user_yang_punya_kategori = user_yang_punya_kategori;
+	}
+
+	public void addUser_yang_punya_kategori(DataAccounts dataAccounts){
+		user_yang_punya_kategori.add(dataAccounts);
+	}
+
+	public ArrayList<DataTugas> getListTugas() {
+		return listTugas;
+	}
+
+	public void setListTugas(ArrayList<DataTugas> listTugas) {
+		this.listTugas = listTugas;
+	}
+	
+	public void addListTugas(DataTugas dataTugas){
+		listTugas.add(dataTugas);
+	}
+	
 }
