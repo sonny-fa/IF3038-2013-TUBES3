@@ -12,18 +12,18 @@ import com.google.appengine.api.datastore.Key;
 public class DataKomentar {
 	@PrimaryKey
 	@Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
-	private int idKomentar;
+	private Long idKomentar;
 	
 	@Persistent
 	private String isi;
 	
 	@Persistent
-	private int tugas_idTugas;
+	private Long tugas_idTugas;
 	
 	@Persistent
-	private int account_idAccount;
+	private Long account_idAccount;
 	
-	public DataKomentar(String isi, int idTugas, int idAccount){
+	public DataKomentar(String isi, Long idTugas, Long idAccount){
 		this.isi = isi;
 		this.tugas_idTugas = idTugas;
 		this.account_idAccount = idAccount;

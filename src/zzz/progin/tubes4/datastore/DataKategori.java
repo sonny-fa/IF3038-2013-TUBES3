@@ -15,17 +15,17 @@ public class DataKategori {
 
 	@PrimaryKey
 	@Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
-	private int idKategori;
+	private Long idKategori;
 	
 	@Persistent
 	private String namaKategori;
 	
 	@Persistent
-	private int pembuat;
+	private Long pembuat;
 	
 	
 	
-	public DataKategori(String namaKategori, int pembuat){
+	public DataKategori(String namaKategori, Long pembuat){
 		super();
 		this.setNamaKategori(namaKategori);
 		this.pembuat = pembuat;
@@ -33,13 +33,13 @@ public class DataKategori {
 
 
 
-	public int getIdKategori() {
+	public Long getIdKategori() {
 		return idKategori;
 	}
 
 
 
-	public void setIdKategori(int idKategori) {
+	public void setIdKategori(Long idKategori) {
 		this.idKategori = idKategori;
 	}
 
@@ -57,13 +57,13 @@ public class DataKategori {
 
 
 
-	public int getPembuat() {
+	public Long getPembuat() {
 		return pembuat;
 	}
 
 
 
-	public void setPembuat(int pembuat) {
+	public void setPembuat(Long pembuat) {
 		this.pembuat = pembuat;
 	}
 

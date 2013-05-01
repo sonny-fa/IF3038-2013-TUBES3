@@ -14,7 +14,7 @@ public class DataAccounts {
 
 	@PrimaryKey
 	@Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
-	private int idAccounts;
+	private Long idAccounts;
 
 	@Persistent
 	private String username;
@@ -46,12 +46,12 @@ public class DataAccounts {
 	}
 
 
-	public int getIdAccounts() {
+	public Long getIdAccounts() {
 		return idAccounts;
 	}
 
 
-	public void setIdAccounts(int idAccounts) {
+	public void setIdAccounts(Long idAccounts) {
 		this.idAccounts = idAccounts;
 	}
 

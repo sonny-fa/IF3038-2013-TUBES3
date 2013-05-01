@@ -12,7 +12,7 @@ import com.google.appengine.api.datastore.Key;
 public class DataAttachment {
 	@PrimaryKey
 	@Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
-	private int idAttachment;
+	private Long idAttachment;
 	
 	@Persistent
 	private String nama;
@@ -21,9 +21,9 @@ public class DataAttachment {
 	private String path;
 	
 	@Persistent
-	private int idTugas;
+	private Long idTugas;
 	
-	public DataAttachment(String nama, int idTugas){
+	public DataAttachment(String nama, Long idTugas){
 		this.setNama(nama);
 		this.path = "";
 		this.setIdTugas(idTugas);
@@ -46,21 +46,21 @@ public class DataAttachment {
 		this.path = path;
 	}
 
-	public int getIdAttachment() {
+	public Long getIdAttachment() {
 		return idAttachment;
 	}
 
-	public void setIdAttachment(int idAttachment) {
+	public void setIdAttachment(Long idAttachment) {
 		this.idAttachment = idAttachment;
 	}
 
 
-	public int getIdTugas() {
+	public Long getIdTugas() {
 		return idTugas;
 	}
 
 
-	public void setIdTugas(int idTugas) {
+	public void setIdTugas(Long idTugas) {
 		this.idTugas = idTugas;
 	}
 }

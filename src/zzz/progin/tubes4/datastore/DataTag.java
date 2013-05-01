@@ -14,7 +14,7 @@ import com.google.appengine.api.datastore.Key;
 public class DataTag {
 	@PrimaryKey
 	@Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
-	private int idTag;
+	private Long idTag;
 	
 	@Persistent
 	private String nama;
@@ -35,12 +35,12 @@ public class DataTag {
 	}
 
 
-	public int getKey() {
+	public Long getKey() {
 		return idTag;
 	}
 
 
-	public void setKey(int key) {
+	public void setKey(Long key) {
 		this.idTag = key;
 	}
 

@@ -55,10 +55,24 @@ public class Progin_Tubes_4Servlet extends HttpServlet {
 //		}
 		
 //		System.out.println(hasil.size());
-		List<DataAccounts> hasil = DBUtils.cobaAmbil();
-		if(hasil.isEmpty()){
-			System.out.println("kosong");
+//		List<DataAccounts> hasil = DBUtils.cobaAmbil();
+//		if(hasil.isEmpty()){
+//			System.out.println("kosong");
+//		}
+//		else{
+//			System.out.println(hasil.get(0).getIdAccounts());
+//		}
+//		try {
+//			DBUtils.buatDataAccount(new DataAccounts("user", "passmantap", "email@email.com", "alay", new Date(), "something"));
+//		} catch (Exception e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+		try {
+			DBUtils.buatDataKategori("kategori aing", new Long(59));
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-		
 	}
 }

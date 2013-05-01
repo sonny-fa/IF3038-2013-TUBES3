@@ -16,7 +16,7 @@ import com.google.appengine.api.datastore.KeyFactory;
 public class DataTugas {
 	@PrimaryKey
 	@Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
-	private int idTugas;
+	private Long idTugas;
 	
 	@Persistent
 	private String nama;
@@ -28,9 +28,9 @@ public class DataTugas {
 	private boolean status_selesai;
 	
 	@Persistent
-	private int kategori_idKategori;
+	private Long kategori_idKategori;
 	
-	public DataTugas(String nama, Date deadline, int idKategori){
+	public DataTugas(String nama, Date deadline, Long idKategori){
 		this.setNama(nama);
 		this.setDeadline(deadline);		
 		this.status_selesai = false;
@@ -61,19 +61,19 @@ public class DataTugas {
 		this.status_selesai = status_selesai;
 	}
 
-	public int getIdTugas() {
+	public Long getIdTugas() {
 		return idTugas;
 	}
 
-	public void setIdTugas(int idTugas) {
+	public void setIdTugas(Long idTugas) {
 		this.idTugas = idTugas;
 	}
 
-	public int getKategori_idKategori() {
+	public Long getKategori_idKategori() {
 		return kategori_idKategori;
 	}
 
-	public void setKategori_idKategori(int kategori_idKategori) {
+	public void setKategori_idKategori(Long kategori_idKategori) {
 		this.kategori_idKategori = kategori_idKategori;
 	}
 }

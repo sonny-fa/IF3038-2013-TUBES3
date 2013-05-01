@@ -40,40 +40,60 @@ public final class DBUtils {
 	public static List<DataAccounts> cobaAmbil(){
 		
 		PersistenceManager pm = get().getPersistenceManager();
-		Query query = pm.newQuery("select from "+DataAccounts.class.getSimpleName() + " where email == 'deadliner@dead.com'");
-//		query.setFilter("username == pUsername");
-//		query.declareParameters("String pUsername");		
-		
+//		Query query = pm.newQuery("select from "+DataAccounts.class.getSimpleName() + " where email == 'deadliner@dead.com'");
+		Query query = pm.newQuery(DataAccounts.class);
+		query.setFilter("username == pUsername");
+		query.declareParameters("String pUsername");		
+//		query.setResultClass(DataAccounts.class);
 //		DataKategori dk = (DataKategori) pm.getObjectById(DataKategori.class, 51);
-//		System.out.println("hasil = "+dk.getNamaKategori());
+//		System.out.prLongln("hasil = "+dk.getNamaKategori());
 		
-		
-		List<DataAccounts> hasil = 	(List<DataAccounts>) query.execute();
+		List<DataAccounts> hasil = 	(List<DataAccounts>) query.execute("DeadlineRanger");
 		
 		query.closeAll();
+		DataAccounts da= (DataAccounts) pm.getObjectById(DataAccounts.class, 59);
 		
 		return hasil;
 	}
 
 	// query-query tambah data baru
-	public static void buatDataAccount(DataAccounts dataAccount)
-			throws Exception {
-		saveToDataStore(dataAccount);
+	public static void buatDataAccount(DataAccounts dataAccount){
+		try {
+			saveToDataStore(dataAccount);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
-	public static void buatDataKategori(String namaKategori, int idAccount)
-			throws Exception {
+	public static void buatDataKategori(String namaKategori, Long idAccount){
 		DataKategori dk = new DataKategori(namaKategori, idAccount);
-		saveToDataStore(dk);
-		saveToDataStore(new Assignee_has_kategori(idAccount, dk.getIdKategori()));
+		try {
+			saveToDataStore(dk);
+			saveToDataStore(new Assignee_has_kategori(idAccount, dk.getIdKategori()));
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
-	public static void buatDataTugas(String namaTugas, Date deadline, int idAccount, int idKategori){
-		
+	public static void buatDataTugas(String namaTugas, Date deadline, Long idAccount, Long idKategori){
+		DataTugas dt = new DataTugas(namaTugas, deadline, idKategori);
+		try{
+			saveToDataStore(dt);
+			saveToDataStore(new Account_has_tugas(idAccount, dt.getIdTugas(), true));
+		} catch(Exception e){
+			e.printStackTrace();
+		}
 	}
 	
-	public static void buatDataKomentar(String isi, int idAccount, int idTugas){
-		
+	public static void buatDataKomentar(String isi, Long idAccount, Long idTugas){
+		DataKomentar dk = new DataKomentar(isi, idTugas, idAccount);
+		try{
+			saveToDataStore(dk);
+		} catch(Exception e){
+			e.printStackTrace();
+		}
 	}
 	// public static void buatDataKategori(String nama, String username) throws
 	// Exception{
@@ -114,11 +134,11 @@ public final class DBUtils {
 	// }
 	// DataTugas dt = null;
 	// if(!hasil.isEmpty()){
-	// System.out.println(hasil.get(0).getNamaKategori());
+	// System.out.prLongln(hasil.get(0).getNamaKategori());
 	// dt = new DataTugas(nama, deadline);
-	// System.out.println(dt.getNama());
-	// System.out.println(dt.getDeadline());
-	// System.out.println(hasil.get(0).getNamaKategori());
+	// System.out.prLongln(dt.getNama());
+	// System.out.prLongln(dt.getDeadline());
+	// System.out.prLongln(hasil.get(0).getNamaKategori());
 	//
 	// hasil.get(0).addListTugas(dt);
 	// }
