@@ -3,36 +3,28 @@ package zzz.progin.tubes4.datastore;
 import java.util.ArrayList;
 
 import javax.jdo.annotations.IdGeneratorStrategy;
+import javax.jdo.annotations.IdentityType;
+import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.Persistent;
 import javax.jdo.annotations.PrimaryKey;
 
 import com.google.appengine.api.datastore.Key;
 
+@PersistenceCapable(identityType = IdentityType.APPLICATION)
 public class DataTag {
 	@PrimaryKey
 	@Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
-	private Key key;
+	private int idTag;
 	
 	@Persistent
 	private String nama;
 	
-	//foreign keys
-	
-	@Persistent
-	private ArrayList<DataTugas> listTugas;	
 	
 	public DataTag(String nama){
 		this.setNama(nama);
-		setListTugas(new ArrayList<DataTugas>());
+		
 	}
 
-	public Key getKey() {
-		return key;
-	}
-
-	public void setKey(Key key) {
-		this.key = key;
-	}
 
 	public String getNama() {
 		return nama;
@@ -42,15 +34,15 @@ public class DataTag {
 		this.nama = nama;
 	}
 
-	public ArrayList<DataTugas> getListTugas() {
-		return listTugas;
+
+	public int getKey() {
+		return idTag;
 	}
 
-	public void setListTugas(ArrayList<DataTugas> listTugas) {
-		this.listTugas = listTugas;
+
+	public void setKey(int key) {
+		this.idTag = key;
 	}
+
 	
-	public void addTugas(DataTugas dataTugas){
-		listTugas.add(dataTugas);
-	}
 }

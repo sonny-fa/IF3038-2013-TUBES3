@@ -2,6 +2,7 @@ package zzz.progin.tubes4;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -24,18 +25,40 @@ public class Progin_Tubes_4Servlet extends HttpServlet {
 //		DataAccounts da = pm.getObjectById(DataAccounts.class, 35);
 //		dk.setAccountPembuat(da);
 //		pm.close();
-		try {
-			
-//			DBUtils.saveToDataStore(da);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+//		try {
+//			
+////			DBUtils.saveToDataStore(da);
+//		} catch (Exception e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//		
+//		List<DataKategori> hasil = DBUtils.cobaAmbil();
+//		hasil.get(0).addKategori_yang_dibuat(new DataKategori("kategori xxx"));
 		
-		List<DataAccounts> hasil = DBUtils.cobaAmbil();
-		hasil.get(0).addKategori_yang_dibuat(new DataKategori("kategori xxx"));
 //		//System.out.println(hasil.get(0).getUsername());
 //		PrintWriter out = resp.getWriter();
-		//out.println(hasil.get(0).getKey());
+//		out.println(hasil.get(0).getNamaKategori());
+		
+//		try {
+//			DBUtils.buatDataKategori("ffyeah", "wtf");
+//		} catch (Exception e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//		DBUtils.buatTugas("tugas aing", new Date(2013,05,01), "ffyeah", "wtf");
+//		try {
+//			DBUtils.buatDataAccount(new DataAccounts("DeadlineRanger", "supersekali", "deadliner@dead.com", "Deadline Ranger", new Date(1992, 12, 12), "haha"));
+//		} catch (Exception e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+		
+//		System.out.println(hasil.size());
+		List<DataAccounts> hasil = DBUtils.cobaAmbil();
+		if(hasil.isEmpty()){
+			System.out.println("kosong");
+		}
+		
 	}
 }

@@ -15,73 +15,58 @@ public class DataKategori {
 
 	@PrimaryKey
 	@Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
-	private Key idKategori;
+	private int idKategori;
 	
 	@Persistent
 	private String namaKategori;
 	
 	@Persistent
-	private DataAccounts accountPembuat;
+	private int pembuat;
 	
-	@Persistent
-	private ArrayList<DataAccounts> user_yang_punya_kategori;
 	
-	@Persistent(mappedBy = "dataKategori")
-	private ArrayList<DataTugas> listTugas;
 	
-	public DataKategori(String namaKategori){
+	public DataKategori(String namaKategori, int pembuat){
 		super();
 		this.setNamaKategori(namaKategori);
-		setUser_yang_punya_kategori(new ArrayList<DataAccounts>());
-		setListTugas(new ArrayList<DataTugas>());
+		this.pembuat = pembuat;
 	}
 
-	public Key getIdKategori() {
+
+
+	public int getIdKategori() {
 		return idKategori;
 	}
 
-	public void setIdKategori(Key idKategori) {
+
+
+	public void setIdKategori(int idKategori) {
 		this.idKategori = idKategori;
 	}
+
+
 
 	public String getNamaKategori() {
 		return namaKategori;
 	}
 
+
+
 	public void setNamaKategori(String namaKategori) {
 		this.namaKategori = namaKategori;
 	}
 
-	public DataAccounts getAccountPembuat() {
-		return accountPembuat;
+
+
+	public int getPembuat() {
+		return pembuat;
 	}
 
-	public void setAccountPembuat(DataAccounts accountPembuat) {
-		this.accountPembuat = accountPembuat;
+
+
+	public void setPembuat(int pembuat) {
+		this.pembuat = pembuat;
 	}
 
-	public ArrayList<DataAccounts> getUser_yang_punya_kategori() {
-		return user_yang_punya_kategori;
-	}
-
-	public void setUser_yang_punya_kategori(ArrayList<DataAccounts> user_yang_punya_kategori) {
-		this.user_yang_punya_kategori = user_yang_punya_kategori;
-	}
-
-	public void addUser_yang_punya_kategori(DataAccounts dataAccounts){
-		user_yang_punya_kategori.add(dataAccounts);
-	}
-
-	public ArrayList<DataTugas> getListTugas() {
-		return listTugas;
-	}
-
-	public void setListTugas(ArrayList<DataTugas> listTugas) {
-		this.listTugas = listTugas;
-	}
 	
-	public void addListTugas(DataTugas dataTugas){
-		listTugas.add(dataTugas);
-	}
 	
 }

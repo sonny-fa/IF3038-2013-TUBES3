@@ -1,15 +1,18 @@
 package zzz.progin.tubes4.datastore;
 
 import javax.jdo.annotations.IdGeneratorStrategy;
+import javax.jdo.annotations.IdentityType;
+import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.Persistent;
 import javax.jdo.annotations.PrimaryKey;
 
 import com.google.appengine.api.datastore.Key;
 
+@PersistenceCapable(identityType = IdentityType.APPLICATION)
 public class DataAttachment {
 	@PrimaryKey
 	@Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
-	private Key key;
+	private int idAttachment;
 	
 	@Persistent
 	private String nama;
@@ -17,22 +20,15 @@ public class DataAttachment {
 	@Persistent
 	private String path;
 	
-	
-	//foreign keys
 	@Persistent
-	private DataTugas pemilikAttachment;
+	private int idTugas;
 	
-	public DataAttachment(String nama){
+	public DataAttachment(String nama, int idTugas){
 		this.setNama(nama);
+		this.path = "";
+		this.setIdTugas(idTugas);
 	}
 
-	public Key getKey() {
-		return key;
-	}
-
-	public void setKey(Key key) {
-		this.key = key;
-	}
 
 	public String getNama() {
 		return nama;
@@ -50,11 +46,21 @@ public class DataAttachment {
 		this.path = path;
 	}
 
-	public DataTugas getPemilikAttachment() {
-		return pemilikAttachment;
+	public int getIdAttachment() {
+		return idAttachment;
 	}
 
-	public void setPemilikAttachment(DataTugas pemilikAttachment) {
-		this.pemilikAttachment = pemilikAttachment;
+	public void setIdAttachment(int idAttachment) {
+		this.idAttachment = idAttachment;
+	}
+
+
+	public int getIdTugas() {
+		return idTugas;
+	}
+
+
+	public void setIdTugas(int idTugas) {
+		this.idTugas = idTugas;
 	}
 }
